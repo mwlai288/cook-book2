@@ -23,13 +23,6 @@ class MealList extends Component {
         })
     })
 }
-    // _deleteUser = () => {
-    //     axios.get(`/api/user/${this.state.user._id}/delete`).then((res) => {
-    //         console.log(`User was deleted`);
-    //     })
-    //     this.setState({redirect: true})
-    // }
-
     render() {
         if(this.state.redirect){
             return <Redirect to={'/'}/>;

@@ -9,10 +9,10 @@ const mongoose = require('mongoose');
 //show route
 router.get('/steps/:stepId', (req, res) => {
     User.findById(req.params.userId).then((user) => {
-        const foundProject = user.projects.find((project) => {
-            return project.id === req.params.projectId
+        const foundMeal = user.meals.find((meal) => {
+            return meal.id === req.params.mealId
         })
-        const foundStep = foundProject.steps.find((step) => {
+        const foundStep = foundMeal.steps.find((step) => {
             return step.id === req.params.stepId
         })
         res.json(foundStep);
@@ -20,18 +20,20 @@ router.get('/steps/:stepId', (req, res) => {
 })
 
 //create route
-router.post('/newStep', (req, res) => {
-    const newStep = new Step();
-    newStep.name = req.body.name;
-    newStep.image = req.body.image;
-    newStep.description = req.body.description;
+router.post('/newstep', (req, res) => {
+    const name = req.body.name;
+    const instruction = req.body.instruction;
+    
+    const newstep = new Step();
+    newstep.name = req.body.name;
+    newstep.instruction = req.body.instruction;
 
     User.findById(req.params.userId).then((user) => {
-        const foundProject = user.projects.find((project) => {
-            return project.id === req.params.projectId
+        const foundMeal = user.meals.find((meal) => {
+            return meal.id === req.params.mealId
         })
 
-        foundProject.steps.push(newStep);
+        foundMeal.steps.push(newstep);
         user.save();
         res.send(200);
     }).catch(err => console.log(err))
@@ -40,13 +42,13 @@ router.post('/newStep', (req, res) => {
 //delete route
 router.delete('/steps/:stepId', (req, res) => {
     User.findById(req.params.userId).then( user => {
-        const foundProject = user.projects.find((project) => {
-            return project.id === req.params.projectId
+        const foundMeal = user.meals.find((meal) => {
+            return meal.id === req.params.mealId
         })
-        const Index = foundProject.steps.findIndex((step) => {
+        const Index = foundMeal.steps.findIndex((step) => {
             return step.id === req.params.stepId
         })   
-        foundProject.steps.splice(Index, 1);
+        foundMeal.steps.splice(Index, 1);
         user.save()
         res.send(200);
     }).catch(err => console.log(err))

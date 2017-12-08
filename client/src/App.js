@@ -5,6 +5,7 @@ import MealList from './components/MealList';
 import Meal from './components/Meal';
 import SignUp from './components/SignUp';
 import NewMeal from './components/NewMeal';
+import NewStep from './components/NewStep'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route exact path="/user/:userId/meal/:mealId" component={Meal} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/user/:userId/newMeal" component={NewMeal} />
+          <Route exact path="/user/:userId/meal/:mealId/newstep" component={NewStep} />
         </div>  
       </Router>
     );

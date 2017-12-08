@@ -9,7 +9,8 @@ class Meal extends Component {
     meal: [],
     steps: [],
     ingredients: "",
-    image: ""
+    image: "",
+    userId: ""
   }
 
   componentWillMount(){
@@ -17,6 +18,7 @@ class Meal extends Component {
     const mealId = this.props.match.params.mealId;
     axios.get(`/api/user/${userId}/meal/${mealId}`).then((res) => {
         this.setState({
+            userId,
             meal: res.data,
             steps: res.data.steps,
             ingredients: res.data.ingredients
@@ -43,10 +45,14 @@ class Meal extends Component {
                   {this.state.steps.map((step, i) => {
                     return(
                       <div key={i}>
+                        <br/>
                         {step.name}: {step.instruction}
                       </div>)
                     })}
                 </div>
+                <Link to={`/user/${this.state.userId}/meal/${this.state.meal._id}/newstep`}>
+                  <button>Add Step</button>
+                    </Link>
             </div>
             <br />
         </div>
