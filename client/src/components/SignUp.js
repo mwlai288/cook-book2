@@ -34,10 +34,10 @@ class SignUp extends Component {
       <div>
         <form onSubmit={this.addNewUser}>
         <div>
-          <input name="userName" type="text" placeholder="User Name" onChange={this.handleChange} />
+          <input name="userName" type="text" placeholder="User Name" onChange={this.handleChange} required/>
         </div> 
         <div>
-          <input name="password" type="text" placeholder="Password" onChange={this.handleChange} />
+          <input name="password" type="text" placeholder="Password" onChange={this.handleChange} required/>
         </div>
           <input type="submit"/>
         </form>

@@ -36,15 +36,16 @@ class MealList extends Component {
         } else {
         return (
             <div>
-            Hello from MealList
             {this.state.meals.map((meals, i) => (
-          <div key={i}>
-            <Link to={`/user/${this.state.user._id}/meal/${meals._id}`}> 
+            <div key={i}>
+                {meals.name}
+                <br/>
+                <Link to={`/user/${this.state.user._id}/meal/${meals._id}`}> 
                 <img src={meals.image} alt=''/> 
-            </Link>           
-
-        </div>
-        ))}
+                </Link>           
+            </div>
+                ))}
+        <Link to={`/user/${this.state.user._id}/newmeal`}> New Meal</Link>
             </div>
         );}
     }

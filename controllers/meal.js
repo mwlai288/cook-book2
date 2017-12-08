@@ -17,23 +17,23 @@ router.get('/meal/:mealId', (req, res) => {
     }).catch(err => console.log(err));
 })
 
-// //create route
-// router.post('/newProject', (req, res) => {
-//     const newProject = new Project();
-//     newProject.name = req.body.name;
-//     newProject.image = req.body.image;
-//     newProject.materials = req.body.materials;
-//     newProject.description = req.body.description;
-    
-//     User.findById(req.params.userId).then((user) => {
-//         user.projects.push(newProject);
-//         user.save();
-//     })
+//create route
+router.post('/newmeal', (req, res) => {
+    const newmeal = new Meal();
+    newmeal.name = req.body.name;
+    newmeal.image = req.body.image;
+    newmeal.ingredients = req.body.ingredients;
 
-//     newProject.save().then((project) => {
-//       res.json(project);
-//     }).catch(err => console.log(err));
-//   })
+    
+    User.findById(req.params.userId).then((user) => {
+        user.meals.push(newmeal);
+        user.save();
+    })
+
+    newmeal.save().then((meal) => {
+      res.json(meal);
+    }).catch(err => console.log(err));
+  })
 
 // //delete route
 // router.delete(`/project/:projectId`, (req, res) => {
