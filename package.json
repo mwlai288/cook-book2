@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "cook-book2",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mwlai288/test.git"
+    "url": "git+https://github.com/mwlai288/cook-book2.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mwlai288/test/issues"
+    "url": "https://github.com/mwlai288/cook-book2/issues"
   },
-  "homepage": "https://github.com/mwlai288/test#readme",
+  "homepage": "https://github.com/mwlai288/cook-book2#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",

@@ -10,7 +10,7 @@ const app = express();
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(process.env.MONGODB_URI); //mongodb://localhost/cook-book
+mongoose.connect(process.env.MONGODB_URI); //mongodb://localhost/cook-book2
 
 const connection = mongoose.connection;
 connection.on('connected', () => {
