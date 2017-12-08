@@ -24,7 +24,7 @@ class HomePage extends Component {
         <h3>Please Select an Existing User</h3>
         {this.state.user.map((user, i) => (
           <div key={i}>
-            <Link to={`/users/${user._id}`} className='userName'>
+            <Link to={`/user/${user._id}`} className='userName'>
               {user.userName}
             </Link>
         </div>
