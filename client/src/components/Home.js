@@ -20,11 +20,11 @@ class HomePage extends Component {
   render () {
     return (
       <div>
-        <h1>Log-In</h1>
-        <h3>Please Select an Existing User</h3>
+        <Link to='/signup'><h1>Sign Up</h1></Link>
+        <h3>Browse through and find a Recipe</h3>
         {this.state.user.map((user, i) => (
           <div key={i}>
-            <Link to={`/user/${user._id}`} className='userName'>
+            <Link to={`/user/${user._id}`}>
               {user.userName}
             </Link>
         </div>

@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     });
 });
 
-//show route (Dashboard)
+//show route 
 router.get('/:userId', (req, res) => {
     User.findById(req.params.userId).then((user) => {
         res.json(user);
