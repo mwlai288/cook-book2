@@ -48,7 +48,7 @@ class NewMeal extends Component {
                   <input name="ingredients" type="text" placeholder="List of Ingredients" onChange={this.handleChange} required/>
               </div>             
               <div>       
-                  <input name="category" type="text" placeholder="Category (Optional)" onChange={this.handleChange} onChange={this.handleChange}/>
+                  <input name="category" type="text" placeholder="Category (Optional)" onChange={this.handleChange}/>
               </div>             
               <br />
                   <input type='submit'/>

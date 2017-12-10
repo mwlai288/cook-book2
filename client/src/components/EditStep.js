@@ -12,12 +12,21 @@ class EditStep extends Component {
   
 
 handleChange = (e) => {
-    const attributeName = e.target.name;
-    const attributeValue = e.target.value;
-    const updateSteps = {...this.state.steps};
-    updateSteps[attributeName] = attributeValue;
-    this.setState({step: updateSteps});
+  const attributeName = e.target.name;
+  const attributeValue = e.target.value;
+  const updateSteps = {...this.state.steps};
+  updateSteps[attributeName] = attributeValue;
+  this.setState({step: updateSteps});
 }
+
+componentWillMount() {
+    const userId = this.props.match.params.userId;
+    const mealId = this.props.match.params.mealId;
+    const stepId = this.props.match.params.stepId;
+    axios.put(`/api/user/${userId}/meal/${mealId}/steps/${stepId}`).then(res => {
+        this.setState({ redirect: true })
+    })
+  }
 
 editStep = (e) => {
   e.preventDefault();
@@ -30,8 +39,6 @@ editStep = (e) => {
     }).catch(err => console.log(err))
   }
 
-
-
 render() {
   if (this.state.redirect){
       return <Redirect to={`/user/${this.props.match.params.userId}`} />
@@ -40,13 +47,12 @@ render() {
           <div>
               <div>
                   <form onSubmit={this.editStep} >
-                      <div>
-                          <input name="ingredients" type="text" value={this.state.steps.ingredients} onChange={this.handleChange} placeholder="Fix Ingredient"/>
-                      </div>
-                     
-                      <div>
-                          <input name="steps" type="text" value={this.state.steps} onChange={this.handleChange} placeholder="Fix a step"/>
-                      </div>
+                  <div>       
+                    <input name="name" type="text" placeholder="Edit Step Name" onChange={this.handleChange}/>
+                  </div>    
+                  <div>       
+                    <input name="instructions" type="text" placeholder="Edit Instruction" onChange={this.handleChange}/>
+                  </div>    
                           <input type='submit'/>
                   </form>
                   <Link to={`/user/${this.props.match.params.userId}`}>Go back</Link>

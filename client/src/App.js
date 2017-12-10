@@ -16,7 +16,8 @@ class App extends Component {
       <Router>
         <div>
           <Nav>
-            <Link to="/">Home</Link>
+            <NavLink to='/signup'>Sign Up</NavLink>
+            <NavLink to="/">Home</NavLink>
           </Nav>
             <Route exact path = '/' component={Home} />
             <Route exact path="/user/:userId/" component={MealList} />
@@ -34,9 +35,16 @@ class App extends Component {
 export default App;
 
 const Nav = styled.div`
-  background-color: #111;
-  height: 20px;
+  background-color: gray;
+  height: 30px;
   padding: 20px;
   text-align: center;
   text-color: white;
+  display: flex;
+  justify-content: space-around;
+`
+
+const NavLink = styled(Link)`
+  color: black;
+  font-weight: bold;
 `

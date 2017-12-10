@@ -12,25 +12,24 @@ class MealList extends Component {
     meals: []
 }
     
-    componentWillMount() {
-        const id = this.props.match.params.userId;
-        axios.get(`/api/user/${id}`).then((res) => {
-        this.setState({
-            user: res.data,
-            meals: res.data.meals,
-            userId: id,
-            likes: res.data.likes
-        })
-    })
-    
+componentWillMount() {
+   const id = this.props.match.params.userId;
+   axios.get(`/api/user/${id}`).then((res) => {
+   this.setState({
+      user: res.data,
+      meals: res.data.meals,
+      userId: id,
+      likes: res.data.likes
+     })
+  })    
 }
 
 deleteMeal = () => {
-    const userId = this.props.match.params.userId;
-    const mealId = this.props.match.params.mealId;
-    axios.delete(`/api/user/${userId}/meal/${mealId}`).then(res => {
-        this.setState({ redirect: true })
-    })
+  const userId = this.props.match.params.userId;
+  const mealId = this.props.match.params.mealId;
+  axios.delete(`/api/user/${userId}/meal/${mealId}`).then(res => {
+    this.setState({ redirect: true })
+  })
 }
 
 // Like = () => {
@@ -49,21 +48,20 @@ deleteMeal = () => {
         } else {
         return (
             <div>
+            <Link to={`/user/${this.state.user._id}/newmeal`}> New Meal</Link>
             {this.state.meals.map((meals, i) => (
             <div key={i}>
-                {meals.name}
-                <br/>
                 <p>Category: {meals.category} </p>
                 <br/>
                 <Link to={`/user/${this.state.user._id}/meal/${meals._id}`}> 
                     <FoodImage src={meals.image} alt=''/> 
-                </Link>      
+                </Link> 
+                <MealName>{meals.name}</MealName>
                 <br/>     
             {/* <button onClick={this.Like}>+1</button>{meals.likes}<button onClick={this.Dislike}>-1</button> */}
             <button onClick={this.deleteMeal}>DELETE</button>
             </div>
                 ))}
-        <Link to={`/user/${this.state.user._id}/newmeal`}> New Meal</Link>
             </div>
         );}
     }
@@ -76,6 +74,10 @@ const FoodImage = styled.img`
     height: 300px;
     display: grid;
     padding: 1rem;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-row-gap: 1rem;
+`
+
+const MealName = styled.div`
+    padding: 1rem;
 `
