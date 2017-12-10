@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+// import styled from 'styled-components';
 
 class Meal extends Component {
   state={
     redirect: false,
     user: "",
     meal: [],
+    likes: 0,
     steps: [],
     ingredients: "",
     image: "",
@@ -25,6 +27,30 @@ class Meal extends Component {
         })
     })
 }
+
+deleteRecipe = () => {
+  const userId = this.props.match.params.userId;
+  const mealId = this.props.match.params.mealId;
+  const stepId = this.props.match.params.stepId;
+  axios.delete(`/api/user/${userId}/meal/${mealId}/steps/${stepId}`).then(res => {
+      this.setState({ redirect: true })
+  })
+}
+
+// editStep = (e) => {
+//   const userId = this.props.match.params.userId;
+//   const mealId = this.props.match.params.mealId;
+//   const stepId = this.props.match.params.stepId;
+//   e.preventDefault();
+//   axios.put(`/api/user/${this.props.match.params.userId}/meal/${this.props.match.params.mealId}/steps/${this.props.match.params.stepsId}`, this.state.steps)
+//   .then((res) => {
+//     console.log('Edit Worked!')  
+//     this.setState({
+//       redirect: true
+//      })
+//     }).catch(err => console.log(err))
+//   }
+
 
   render() {
     if (this.state.redirect){
@@ -47,18 +73,26 @@ class Meal extends Component {
                       <div key={i}>
                         <br/>
                         {step.name}: {step.instruction}
+                        <button onClick={this.deleteRecipe}>x</button>
+                {/* <Link to={`/user/${this.state.userId}/meal/${this.state.meal._id}/steps/${this.state.steps._id}/editstep`}>
+                  <button>Edit</button>
+                </Link> */}
                       </div>)
                     })}
                 </div>
                 <Link to={`/user/${this.state.userId}/meal/${this.state.meal._id}/newstep`}>
                   <button>Add Step</button>
-                    </Link>
+                </Link>
+                <Link to={`/user/${this.state.userId}`}>
+                  <button>Back</button>
+                </Link>
+                
             </div>
             <br />
         </div>
     );
   }
-  }
-  }
-
+ }
+}
 export default Meal;
+

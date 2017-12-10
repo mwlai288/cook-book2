@@ -8,6 +8,7 @@ class NewMeal extends Component {
       name: "",
       image: "",
       ingredients: "",
+      category: ""
     },
     redirect: false
   }
@@ -41,12 +42,14 @@ class NewMeal extends Component {
                   <input name="name" type="text" placeholder="Name" onChange={this.handleChange} required/>
               </div>
               <div>
-                  <input name="image" type="text"  placeholder="Image Link" onChange={this.handleChange} required/>
+                  <input name="image" type="text"  placeholder="Image URL" onChange={this.handleChange} required/>
               </div>
               <div>       
                   <input name="ingredients" type="text" placeholder="List of Ingredients" onChange={this.handleChange} required/>
-              </div>
-              
+              </div>             
+              <div>       
+                  <input name="category" type="text" placeholder="Category (Optional)" onChange={this.handleChange} onChange={this.handleChange}/>
+              </div>             
               <br />
                   <input type='submit'/>
           </form>

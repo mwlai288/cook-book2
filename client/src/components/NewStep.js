@@ -34,7 +34,7 @@ render() {
     } else {
         return (
             <div>
-                <h1>Add A New Step</h1>               
+                <h1>New Step</h1>               
                     <form onSubmit={this.addNewStep}>
                         <div>
                             <input name="name" type="text" placeholder="Name" onChange={this.handleChange} required/>

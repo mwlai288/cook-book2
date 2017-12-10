@@ -54,4 +54,11 @@ router.delete('/steps/:stepId', (req, res) => {
     }).catch(err => console.log(err))
 })
 
+//edit route
+router.put('/steps/:stepId', (req,res) => {
+    User.findByIdAndUpdate(req.body._id, req.body).then((user)=>{ 
+        res.send(200);  
+    }).catch(err => console.log(err))
+})
+
 module.exports = router;
