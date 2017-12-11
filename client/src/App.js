@@ -17,6 +17,7 @@ class App extends Component {
         <div>
           <Nav>
             <NavLink to='/signup'>Sign Up</NavLink>
+              COOK BOOK
             <NavLink to="/">Home</NavLink>
           </Nav>
             <Route exact path = '/' component={Home} />
@@ -37,11 +38,11 @@ export default App;
 const Nav = styled.div`
   background-color: gray;
   height: 30px;
-  padding: 20px;
+  padding-top: 20px;
   text-align: center;
-  text-color: white;
   display: flex;
   justify-content: space-around;
+  font-weight: bold;
 `
 
 const NavLink = styled(Link)`
