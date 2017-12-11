@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node":"8.9.2"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "concurrently \"nodemon server.js\" \"cd ./client  && npm start \" ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,6 +28,7 @@
     "concurrently": "^3.5.1",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
-    "mongoose": "^4.13.6"
+    "mongoose": "^4.13.6",
+    "react-overdrive": "0.0.9"
   }
 }

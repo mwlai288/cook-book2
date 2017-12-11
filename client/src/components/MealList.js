@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Link, Redirect } from 'react-router-dom';
+// import Overdrive from 'react-overdrive';
 
 
 class MealList extends Component {
@@ -48,15 +49,18 @@ deleteMeal = () => {
         } else {
         return (
             <div>
-            <Link to={`/user/${this.state.user._id}/newmeal`}> New Meal</Link>
-            {this.state.meals.map((meals, i) => (
+                <NewMeal>
+                    <Link to={`/user/${this.state.user._id}/newmeal`}> New Meal</Link>
+                </NewMeal>
+                {this.state.meals.map((meals, i) => (
             <div key={i}>
-                <p>Category: {meals.category} </p>
                 <br/>
+                <MealName>{meals.name}</MealName>
+            {/* <Overdrive id={meals._id}> */}
                 <Link to={`/user/${this.state.user._id}/meal/${meals._id}`}> 
                     <FoodImage src={meals.image} alt=''/> 
                 </Link> 
-                <MealName>{meals.name}</MealName>
+            {/* </Overdrive> */}
                 <br/>     
             {/* <button onClick={this.Like}>+1</button>{meals.likes}<button onClick={this.Dislike}>-1</button> */}
             <button onClick={this.deleteMeal}>DELETE</button>
@@ -80,4 +84,7 @@ const FoodImage = styled.img`
 
 const MealName = styled.div`
     padding: 1rem;
+`
+const NewMeal = styled.div`
+    text-align: center;
 `

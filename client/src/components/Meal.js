@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+// import Overdrive from 'react-overdrive';
 
 class Meal extends Component {
   state={
@@ -43,29 +44,30 @@ deleteRecipe = () => {
   } else {
       return (
           <div>
-            <h1><b>{this.state.meal.name}</b></h1>
             <Container>
-              <Image src={this.state.meal.image} alt="" align="middle"/> Ingredients: {this.state.ingredients}
+            <h1><b>{this.state.meal.name}</b></h1>
+            
+            <Image src={this.state.meal.image} alt="" align="middle"/> Ingredients: {this.state.ingredients}
             </Container>
-            <div>
-              <div>
+           <div>
+              <StepsContainer>
                   {this.state.steps.map((step, i) => {
                     return(
-                      <Steps key={i}>
+                      <div key={i}>
                         <br/>
                         {step.name}: {step.instruction}
                         <button onClick={this.deleteRecipe}>x</button>
                 {/* <Link to={`/user/${this.state.userId}/meal/${this.state.meal._id}/steps/${this.state.steps.Id}/editstep`}>
                   <button>Edit</button>
                 </Link> */}
-                      </Steps>)
+                      </div>)
                     })}
-                </div>
+                </StepsContainer>
                 <Link to={`/user/${this.state.userId}/meal/${this.state.meal._id}/newstep`}>
-                  <button>Add Step</button>
+                  <ButtonStyle>Add Step</ButtonStyle>
                 </Link>
                 <Link to={`/user/${this.state.userId}`}>
-                  <button>Back</button>
+                  <ButtonStyle>Back</ButtonStyle>
                 </Link>
                 
             </div>
@@ -77,8 +79,12 @@ deleteRecipe = () => {
 }
 export default Meal;
 
-const Steps = styled.div`
+const StepsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
 `
 const Image = styled.img`
   width: 300px;
@@ -86,17 +92,15 @@ const Image = styled.img`
   padding: 1rem;
   display: flex;
   flex-direction: row;
+  box-shadow: 30px black;
 `
 
-const Ingredients = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 1rem;
+const ButtonStyle = styled.button`
   text-align: center;
 `
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
 `

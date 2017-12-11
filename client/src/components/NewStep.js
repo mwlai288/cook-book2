@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import styled from 'styled-components';
 
 class NewStep extends Component {
   state = {
@@ -33,7 +34,7 @@ render() {
         return <Redirect to={`/user/${this.props.match.params.userId}/meal/${this.props.match.params.mealId}`} />
     } else {
         return (
-            <div>
+            <InputBox>
                 <h1>New Step</h1>               
                     <form onSubmit={this.addNewStep}>
                         <div>
@@ -50,10 +51,18 @@ render() {
                     Go Back
                 </Link>
                
-            </div>
+            </InputBox>
         );    
     }
 }
 }
 
 export default NewStep;
+
+const InputBox = styled.div`
+ text-align: center;
+ background-color: red;
+ border: 25px solid green;
+ padding: 25px;
+ margin: 25px;
+`

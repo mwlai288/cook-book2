@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import styled from 'styled-components';
 
 class NewMeal extends Component {
   state = {
@@ -35,7 +36,7 @@ class NewMeal extends Component {
       return <Redirect to={`/user/${this.props.match.params.userId}`} />
   } else {
     return (
-      <div>
+      <InputBox>
       <h1> Enter a new Recipe </h1>                                      
           <form onSubmit={this.addNewMeal}>
               <div>
@@ -55,10 +56,18 @@ class NewMeal extends Component {
           </form>
           <br />
           <Link to={`/user/${this.props.match.params.userId}`}>Go back</Link>
-  </div>
+      </InputBox>
       );    
     }
   }
 }
 
 export default NewMeal;
+
+const InputBox = styled.div`
+    text-align: center;
+    background-color: red;
+    border: 25px solid green;
+    padding: 25px;
+    margin: 25px;
+`
