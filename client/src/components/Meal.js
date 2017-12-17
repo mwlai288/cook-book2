@@ -45,7 +45,7 @@ deleteRecipe = () => {
       return (
           <div>
             <Container>
-            <h1><b>{this.state.meal.name}</b></h1>
+            <TitleName>{this.state.meal.name}</TitleName>
             
             <Image src={this.state.meal.image} alt="" align="middle"/> Ingredients: {this.state.ingredients}
             </Container>
@@ -103,4 +103,9 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+
+const TitleName = styled.h1`
+  font-family: 'Lobster', cursive;
+  color: red;
 `
