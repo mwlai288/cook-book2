@@ -33,41 +33,28 @@ deleteMeal = () => {
   })
 }
 
-// Like = () => {
-//     this.setState({
-//         likes: this.state.likes + 1        
-//       });
-// }
-
-// Dislike = () => {
-//     likes: this.state.likes - 1
-// }
-
     render() {
         if(this.state.redirect){
             return <Redirect to={'/'}/>;
         } else {
         return (
-            <div>
+            <Grid>
                 <NewMeal>
                     <Link to={`/user/${this.state.user._id}/newmeal`}> New Meal</Link>
                 </NewMeal>
-                {this.state.meals.map((meals, i) => (
-            <div key={i}>
-                <br/>
-                <MealName>{meals.name}</MealName>
-            {/* <Overdrive id={meals._id}> */}
-                <Link to={`/user/${this.state.user._id}/meal/${meals._id}`}> 
-                    <FoodImage src={meals.image} alt=''/> 
-                </Link> 
-            {/* </Overdrive> */}
-                <br/>     
-            {/* <button onClick={this.Like}>+1</button>{meals.likes}<button onClick={this.Dislike}>-1</button> */}
-            <button onClick={this.deleteMeal}>DELETE</button>
-            </div>
-                ))}
-            </div>
-        );}
+                 {this.state.meals.map((meals, i) => (
+                    <div key={i}>
+                    <MealName>{meals.name}</MealName>
+                    <Link to={`/user/${this.state.user._id}/meal/${meals._id}`}> 
+                        <FoodImage src={meals.image} alt=''/> 
+                    </Link> 
+                    
+                <button onClick={this.deleteMeal}>DELETE</button>
+                </div>
+                    ))}
+            </Grid>
+            );
+        }
     }
 }
 
@@ -76,15 +63,23 @@ export default MealList;
 const FoodImage = styled.img`
     width: 300px;
     height: 300px;
-    display: grid;
-    padding: 1rem;
-    grid-template-columns: repeat(3, 1fr);
-    grid-row-gap: 1rem;
 `
 
 const MealName = styled.div`
-    padding: 1rem;
+    /* padding: 1rem; */
 `
 const NewMeal = styled.div`
-    text-align: center;
+    /* text-align: center; */
+`
+
+const Grid = styled.div`
+    /* display: grid;
+    grid-template-columns: 10px 100px 100px 100px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px; */
+    /* border: dashed red 2px;  */
+`
+
+const FoodGrid = styled.div`
+    /* border: dashed red 2px; */
 `

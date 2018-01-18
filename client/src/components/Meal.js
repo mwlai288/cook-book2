@@ -46,9 +46,12 @@ deleteRecipe = () => {
           <div>
             <Container>
             <TitleName>{this.state.meal.name}</TitleName>
-            
-            <Image src={this.state.meal.image} alt="" align="middle"/> Ingredients: {this.state.ingredients}
+
+            <Image src={this.state.meal.image} alt="" align="middle"/>
             </Container>
+            <IngrediDiv>
+              Ingredients: {this.state.ingredients}
+            </IngrediDiv>
            <div>
               <StepsContainer>
                   {this.state.steps.map((step, i) => {
@@ -63,13 +66,14 @@ deleteRecipe = () => {
                       </div>)
                     })}
                 </StepsContainer>
+                <ButtonStyle>
                 <Link to={`/user/${this.state.userId}/meal/${this.state.meal._id}/newstep`}>
-                  <ButtonStyle>Add Step</ButtonStyle>
+                  <button>Add Step</button>
                 </Link>
                 <Link to={`/user/${this.state.userId}`}>
-                  <ButtonStyle>Back</ButtonStyle>
+                  <button>Back</button>
                 </Link>
-                
+                </ButtonStyle>
             </div>
             <br />
         </div>
@@ -95,17 +99,23 @@ const Image = styled.img`
   box-shadow: 30px black;
 `
 
-const ButtonStyle = styled.button`
-  text-align: center;
+const ButtonStyle = styled.div`
+  display: flex;
+  justify-content: center;
 `
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: solid orange 2px;
 `
 
 const TitleName = styled.h1`
   font-family: 'Lobster', cursive;
   color: red;
+`
+const IngrediDiv = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
 `
